@@ -1,0 +1,9 @@
+name: action1
+on: [push]
+
+jobs:
+  run-shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo string
+        run: echo 'hello world'
