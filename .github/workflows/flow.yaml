@@ -20,4 +20,4 @@ jobs:
       - name: echo running window
         run: echo 'window second job'
       - name : error step
-        run : does not exitssss
+        run : does not exitsss
