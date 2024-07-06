@@ -13,3 +13,9 @@ jobs:
     steps:
       - name: echo running window
         run: echo 'window second job'
+  run-maci:
+    runs-on: macos-latest
+    needs: run-shell
+    steps:
+      - name: echo running window
+        run: echo 'window second job'
