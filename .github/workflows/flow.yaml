@@ -7,3 +7,9 @@ jobs:
     steps:
       - name: echo string
         run: echo 'hello world'
+  
+  run-windows:
+    runs-on: window-latest
+    steps:
+      - name: echo running window
+        run: echo 'window second job'
