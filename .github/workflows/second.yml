@@ -23,4 +23,5 @@ jobs:
                 git fetch origin
                 git checkout main 
                 ls -a
+                cat README.md
 
