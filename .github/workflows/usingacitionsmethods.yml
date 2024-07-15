@@ -1,9 +1,10 @@
 name : using methods
 on : [push]
-runs-on : ubuntu-latest
+
 jobs :
     for_checkout:
-      steps : 
+      runs-on : ubuntu-latest
+      steps :
         - name : before_checkout
           run: ls -a
         - name : cloning_git
