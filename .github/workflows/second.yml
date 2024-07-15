@@ -13,4 +13,4 @@ jobs:
               run : |
                 echo $GITHUB_ACTOR
                 echo $GITHUB_REPOSITORY
-                echo $GIT_HUB_TOKEN_2
+                echo ${{ secrets.GIT_HUB_TOKEN }}
