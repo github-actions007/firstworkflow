@@ -1,0 +1,15 @@
+name : using methods
+on : [push]
+runs-on : ubuntu-latest
+jobs :
+    for_checkout:
+      steps : 
+        - name : before_checkout
+          run: ls -a
+        - name : cloning_git
+          uses: actions/checkout@v4
+        - name : after_checkout
+          run: |
+            ls -a
+            cat README.md
+
