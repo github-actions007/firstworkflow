@@ -17,8 +17,10 @@ jobs:
             - name : clonerepo
               run : |
                 git init
+                git config --global user.name "gowtham9610"
+                git config --global user.email "gowtham9610@gmail.com"
                 git remote add origin"https://$GITHUB_ACTOR:${{ secrets.GIT_HUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
                 git fetch origin
-                git checkout master 
+                git checkout main 
                 ls -a
 
