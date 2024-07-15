@@ -1,0 +1,11 @@
+name : shell and directory
+on : [push]
+defaults:
+    run:
+        shell : bash
+jobs:
+    git clone job:
+        runs-on : ubuntu-latest
+        steps:
+            - name : execute git commands
+              run : ls -a 
