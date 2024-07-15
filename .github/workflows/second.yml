@@ -19,6 +19,6 @@ jobs:
                 git init
                 git remote add origin"https://$GITHUB_ACTOR:${{ secrets.GIT_HUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
                 git fetch origin
-                git checkout main
+                git checkout master 
                 ls -a
 
