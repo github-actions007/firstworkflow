@@ -1,0 +1,10 @@
+name: pullrequest and issues
+on: [push, pull_request, issues]
+jobs:
+  checkout-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
+      - run: actions/checkout@v3
