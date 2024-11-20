@@ -1,0 +1,67 @@
+name: Deploy Workflow with Post-Build Approval
+ 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      approve_deployment:
+        description: 'Do you approve the deployment? (yes/no)'
+        required: false
+        default: ''
+ 
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+ 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+ 
+      - name: Install dependencies
+        run: npm install
+ 
+      - name: Run tests
+        run: npm test
+ 
+      - name: Save Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: ./build # Replace with your actual build output directory
+ 
+  approval:
+    name: Manual Approval
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: ./build
+ 
+      - name: Wait for User Approval
+        id: approval
+        run: |
+          echo "Waiting for user approval through workflow_dispatch."
+          echo "Set 'approve_deployment' input to 'yes' or 'no'."
+ 
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [approval]
+    if: ${{ github.event.inputs.approve_deployment == 'yes' }}
+    environment:
+      name: production
+    steps:
+      - name: Deploy application
+        run: |
+          echo "Deploying application to production..."
+          # Add your deployment commands here
