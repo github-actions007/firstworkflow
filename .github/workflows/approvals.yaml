@@ -31,7 +31,6 @@ jobs:
     name: Deploy to Production
     runs-on: ubuntu-latest
     needs: [approval]
-    if: ${{ github.event.inputs.approve_deployment == 'yes' }}
     environment:
       name: prod
     steps:
